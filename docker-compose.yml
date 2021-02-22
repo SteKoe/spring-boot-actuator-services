@@ -1,0 +1,25 @@
+services:
+  spring-boot-1.5:
+    image: spring-boot-1.5:1.5.14.RELEASE
+    ports:
+      - "1500:8080"
+  spring-boot-2.0:
+    image: spring-boot-2.0:2.0.5.RELEASE
+    ports:
+      - "2000:8080"
+  spring-boot-2.1:
+    image: spring-boot-2.1:2.1.8.RELEASE
+    ports:
+      - "2100:8080"
+  spring-boot-2.2:
+    image: spring-boot-2.2:2.2.5.RELEASE
+    ports:
+      - "2200:8080"
+  spring-boot-2.3:
+    image: spring-boot-2.3:2.3.3.RELEASE
+    ports:
+      - "2300:8080"
+  spring-boot-2.4:
+    image: spring-boot-2.4:2.4.3
+    ports:
+      - "2400:8080"
