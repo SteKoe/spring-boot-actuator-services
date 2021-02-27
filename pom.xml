@@ -15,6 +15,7 @@
         <maven.compiler.target>8</maven.compiler.target>
     </properties>
     <modules>
+        <module>spring-boot-1.4</module>
         <module>spring-boot-1.5</module>
         <module>spring-boot-2.0</module>
         <module>spring-boot-2.1</module>
@@ -60,7 +61,7 @@
                         </execution>
                     </executions>
                     <configuration>
-                        <repository>${project.artifactId}</repository>
+                        <repository>spring-boot</repository>
                         <tag>${project.version}</tag>
                         <buildArgs>
                             <JAR_FILE>target/${project.build.finalName}.jar</JAR_FILE>
