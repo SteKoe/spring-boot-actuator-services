@@ -51,12 +51,12 @@ app.kubernetes.io/instance: {{ .Release.Name }}
 {{- end }}
 
 {{/*
-Create the name of the service account to use
+Service Account Name
 */}}
 {{- define "spring-boot-app.serviceAccountName" -}}
-{{- if .Values.serviceAccount.create }}
-{{- default (include "spring-boot-app.fullname" .) .Values.serviceAccount.name }}
-{{- else }}
-{{- default "default" .Values.serviceAccount.name }}
-{{- end }}
-{{- end }}
+{{- if .Values.serviceAccount.create -}}
+    {{ default (include "spring-boot-app.fullname" .) .Values.serviceAccount.name }}
+{{- else -}}
+    {{ default "default" .Values.serviceAccount.name }}
+{{- end -}}
+{{- end -}}

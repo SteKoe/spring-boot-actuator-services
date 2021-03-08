@@ -5,4 +5,4 @@ The main purpose of this repository is to deploy different versions of Spring Bo
 
 ## Usage
  1. Compile and create docker images by running `mvn package`
- 1. Deploy docker images to k8s by using provided helm chart or running `runHelm.sh` 
+ 1. Deploy docker images to k8s by using provided helm chart or running `runHelm.sh --install` 

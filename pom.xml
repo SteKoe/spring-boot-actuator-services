@@ -11,6 +11,7 @@
 
     <properties>
         <revision>1.0.0-SNAPSHOT</revision>
+        <docker.repository>spring-boot</docker.repository>
         <maven.compiler.source>8</maven.compiler.source>
         <maven.compiler.target>8</maven.compiler.target>
     </properties>
@@ -22,6 +23,9 @@
         <module>spring-boot-2.2</module>
         <module>spring-boot-2.3</module>
         <module>spring-boot-2.4</module>
+        <!-- SPRING BOOT ADMIN -->
+        <module>spring-boot-admin-2.3</module>
+        <module>spring-boot-admin-2.4</module>
     </modules>
     <organization>
         <name>codecentric AG</name>
@@ -61,7 +65,7 @@
                         </execution>
                     </executions>
                     <configuration>
-                        <repository>spring-boot</repository>
+                        <repository>${docker.repository}</repository>
                         <tag>${project.version}</tag>
                         <buildArgs>
                             <JAR_FILE>target/${project.build.finalName}.jar</JAR_FILE>
