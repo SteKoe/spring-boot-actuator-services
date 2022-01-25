@@ -82,6 +82,16 @@
                             </image>
                         </images>
                     </configuration>
+                    <executions>
+                        <execution>
+                            <id>package-build</id>
+                            <phase>package</phase>
+                            <goals>
+                                <goal>build</goal>
+                                <goal>push</goal>
+                            </goals>
+                        </execution>
+                    </executions>
                 </plugin>
             </plugins>
         </pluginManagement>
