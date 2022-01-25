@@ -71,7 +71,6 @@
                                     <assembly>
                                         <descriptorRef>artifact</descriptorRef>
                                     </assembly>
-                                    <user>spring</user>
                                     <volumes>
                                         <volume>/tmp</volume>
                                     </volumes>
@@ -89,7 +88,6 @@
                             <phase>package</phase>
                             <goals>
                                 <goal>build</goal>
-                                <goal>push</goal>
                             </goals>
                         </execution>
                     </executions>

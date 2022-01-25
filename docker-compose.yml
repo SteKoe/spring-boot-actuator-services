@@ -1,0 +1,99 @@
+version: "3.3"
+
+services:
+  traefik:
+    image: "traefik:v2.6"
+    container_name: "traefik"
+    command:
+      - "--log.level=DEBUG"
+      - "--api.insecure=true"
+      - "--providers.docker=true"
+      - "--providers.docker.exposedbydefault=false"
+      - "--entrypoints.web.address=:80"
+    ports:
+      - "80:80"
+      - "8080:8080"
+    volumes:
+      - "/var/run/docker.sock:/var/run/docker.sock:ro"
+
+  spring-boot-1.4:
+    image: "stekoe/spring-boot-app:1.4.7.RELEASE"
+    labels:
+      - "traefik.enable=true"
+      - "traefik.http.routers.spring-1-4.rule=PathPrefix(`/app/1.4`)"
+      - "traefik.http.routers.spring-1-5.entrypoints=web"
+    environment:
+      - server.servlet.context-path=/app/2.4
+
+  spring-boot-1.5:
+    image: "stekoe/spring-boot-app:1.5.14.RELEASE"
+    labels:
+      - "traefik.enable=true"
+      - "traefik.http.routers.spring-1-5.rule=PathPrefix(`/app/1.5`)"
+      - "traefik.http.routers.spring-1-5.entrypoints=web"
+    environment:
+      - server.servlet.context-path=/app/1.5
+
+  spring-boot-2.0:
+    image: "stekoe/spring-boot-app:2.0.5.RELEASE"
+    labels:
+      - "traefik.enable=true"
+      - "traefik.http.routers.spring-2-0.rule=PathPrefix(`/app/2.0`)"
+      - "traefik.http.routers.spring-2-0.entrypoints=web"
+    environment:
+      - server.servlet.context-path=/app/2.0
+
+  spring-boot-2.1:
+    image: "stekoe/spring-boot-app:2.1.8.RELEASE"
+    labels:
+      - "traefik.enable=true"
+      - "traefik.http.routers.spring-2-1.rule=PathPrefix(`/app/2.1`)"
+      - "traefik.http.routers.spring-2-1.entrypoints=web"
+    environment:
+      - server.servlet.context-path=/app/2.1
+
+  spring-boot-2.2:
+    image: "stekoe/spring-boot-app:2.2.5.RELEASE"
+    labels:
+      - "traefik.enable=true"
+      - "traefik.http.routers.spring-2-2.rule=PathPrefix(`/app/2.2`)"
+      - "traefik.http.routers.spring-2-2.entrypoints=web"
+    environment:
+      - server.servlet.context-path=/app/2.2
+
+  spring-boot-2.3:
+    image: "stekoe/spring-boot-app:2.3.3.RELEASE"
+    labels:
+      - "traefik.enable=true"
+      - "traefik.http.routers.spring-2-3.rule=PathPrefix(`/app/2.3`)"
+      - "traefik.http.routers.spring-2-3.entrypoints=web"
+    environment:
+      - server.servlet.context-path=/app/2.3
+
+  spring-boot-2.4:
+    image: "stekoe/spring-boot-app:2.4.13"
+    labels:
+      - "traefik.enable=true"
+      - "traefik.http.routers.spring-2-4.rule=PathPrefix(`/app/2.4`)"
+      - "traefik.http.routers.spring-2-4.entrypoints=web"
+    environment:
+      - server.servlet.context-path=/app/2.4
+
+  spring-boot-2.5:
+    image: "stekoe/spring-boot-app:2.5.9"
+    labels:
+      - "traefik.enable=true"
+      - "traefik.http.routers.spring-2-5.rule=PathPrefix(`/app/2.5`)"
+      - "traefik.http.routers.spring-2-5.entrypoints=web"
+    environment:
+      - server.servlet.context-path=/app/2.5
+
+  spring-boot-2.6:
+    image: "stekoe/spring-boot-app:2.6.3"
+    labels:
+      - "traefik.enable=true"
+      - "traefik.http.routers.spring-2-6.rule=PathPrefix(`/app/2.6`)"
+      - "traefik.http.routers.spring-2-6.entrypoints=web"
+      - "traefik.port=8080"
+    environment:
+      - server.servlet.context-path=/app/2.6
