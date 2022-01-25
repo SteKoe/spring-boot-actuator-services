@@ -20,7 +20,6 @@
     <modelVersion>4.0.0</modelVersion>
     <version>1.4.7.RELEASE</version>
     <artifactId>spring-boot-1.4</artifactId>
-    <name>Sample Service running Spring Boot 1.4.X</name>
     <parent>
         <groupId>de.codecentric.spring.boot</groupId>
         <artifactId>spring-boot-actuator-examples</artifactId>
@@ -42,12 +41,6 @@
         <dependency>
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-starter-web</artifactId>
-            <exclusions>
-                <exclusion>
-                    <groupId>org.hibernate</groupId>
-                    <artifactId>hibernate-validator</artifactId>
-                </exclusion>
-            </exclusions>
         </dependency>
         <dependency>
             <groupId>org.springframework.boot</groupId>
@@ -61,8 +54,8 @@
                 <artifactId>spring-boot-maven-plugin</artifactId>
             </plugin>
             <plugin>
-                <groupId>com.spotify</groupId>
-                <artifactId>dockerfile-maven-plugin</artifactId>
+                <groupId>io.fabric8</groupId>
+                <artifactId>docker-maven-plugin</artifactId>
             </plugin>
         </plugins>
     </build>

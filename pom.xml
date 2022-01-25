@@ -11,10 +11,10 @@
 
     <properties>
         <revision>1.0.0-SNAPSHOT</revision>
-        <docker.repository>spring-boot</docker.repository>
-        <maven.compiler.source>8</maven.compiler.source>
-        <maven.compiler.target>8</maven.compiler.target>
+        <maven.compiler.source>11</maven.compiler.source>
+        <maven.compiler.target>11</maven.compiler.target>
     </properties>
+
     <modules>
         <module>spring-boot-1.4</module>
         <module>spring-boot-1.5</module>
@@ -23,9 +23,9 @@
         <module>spring-boot-2.2</module>
         <module>spring-boot-2.3</module>
         <module>spring-boot-2.4</module>
-        <!-- SPRING BOOT ADMIN -->
-        <module>spring-boot-admin-2.3</module>
-        <module>spring-boot-admin-2.4</module>
+        <module>spring-boot-2.5</module>
+        <module>spring-boot-2.6</module>
+        <module>spring-boot-3.0</module>
     </modules>
     <organization>
         <name>codecentric AG</name>
@@ -38,12 +38,18 @@
         </license>
     </licenses>
     <build>
+        <resources>
+            <resource>
+                <directory>src/main/resources</directory>
+                <filtering>true</filtering>
+            </resource>
+        </resources>
         <pluginManagement>
             <plugins>
                 <plugin>
                     <groupId>org.springframework.boot</groupId>
                     <artifactId>spring-boot-maven-plugin</artifactId>
-                    <version>2.4.3</version>
+                    <version>${project.version}</version>
                     <executions>
                         <execution>
                             <goals>
@@ -53,26 +59,65 @@
                     </executions>
                 </plugin>
                 <plugin>
-                    <groupId>com.spotify</groupId>
-                    <artifactId>dockerfile-maven-plugin</artifactId>
-                    <version>1.4.13</version>
+                    <groupId>io.fabric8</groupId>
+                    <artifactId>docker-maven-plugin</artifactId>
+                    <version>0.38.1</version>
+                    <configuration>
+                        <images>
+                            <image>
+                                <name>stekoe/spring-boot-app:${project.version}</name>
+                                <build>
+                                    <from>openjdk:11-jre-slim</from>
+                                    <assembly>
+                                        <descriptorRef>artifact</descriptorRef>
+                                    </assembly>
+                                    <user>spring</user>
+                                    <volumes>
+                                        <volume>/tmp</volume>
+                                    </volumes>
+                                    <ports>
+                                        <port>8080</port>
+                                    </ports>
+                                    <entryPoint>java -Djava.security.egd=file:/dev/./urandom -Dlogging.level.root=debug
+                                        -jar maven/${project.name}-${project.version}.jar
+                                    </entryPoint>
+                                </build>
+                            </image>
+                        </images>
+                    </configuration>
                     <executions>
                         <execution>
-                            <id>default</id>
+                            <id>package-build</id>
+                            <phase>package</phase>
                             <goals>
                                 <goal>build</goal>
+                                <goal>push</goal>
                             </goals>
                         </execution>
                     </executions>
-                    <configuration>
-                        <repository>${docker.repository}</repository>
-                        <tag>${project.version}</tag>
-                        <buildArgs>
-                            <JAR_FILE>target/${project.build.finalName}.jar</JAR_FILE>
-                        </buildArgs>
-                    </configuration>
                 </plugin>
             </plugins>
         </pluginManagement>
     </build>
+
+    <repositories>
+        <repository>
+            <id>spring-milestones</id>
+            <name>Spring Milestones</name>
+            <url>https://repo.spring.io/milestone</url>
+            <snapshots>
+                <enabled>false</enabled>
+            </snapshots>
+        </repository>
+    </repositories>
+    <pluginRepositories>
+        <pluginRepository>
+            <id>spring-milestones</id>
+            <name>Spring Milestones</name>
+            <url>https://repo.spring.io/milestone</url>
+            <snapshots>
+                <enabled>false</enabled>
+            </snapshots>
+        </pluginRepository>
+    </pluginRepositories>
 </project>

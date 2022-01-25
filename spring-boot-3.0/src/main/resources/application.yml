@@ -1,0 +1,10 @@
+management:
+  endpoints:
+    web:
+      exposure:
+        include: "*"
+
+app:
+  spring:
+    boot:
+      version: "@project.version@"

@@ -20,7 +20,6 @@
     <modelVersion>4.0.0</modelVersion>
     <version>2.1.8.RELEASE</version>
     <artifactId>spring-boot-2.1</artifactId>
-    <name>Sample Service running Spring Boot 2.1.X</name>
     <parent>
         <groupId>de.codecentric.spring.boot</groupId>
         <artifactId>spring-boot-actuator-examples</artifactId>
@@ -55,8 +54,8 @@
                 <artifactId>spring-boot-maven-plugin</artifactId>
             </plugin>
             <plugin>
-                <groupId>com.spotify</groupId>
-                <artifactId>dockerfile-maven-plugin</artifactId>
+                <groupId>io.fabric8</groupId>
+                <artifactId>docker-maven-plugin</artifactId>
             </plugin>
         </plugins>
     </build>

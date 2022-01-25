@@ -18,14 +18,19 @@
 <project xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns="http://maven.apache.org/POM/4.0.0"
          xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
     <modelVersion>4.0.0</modelVersion>
-    <version>1.5.14.RELEASE</version>
-    <artifactId>spring-boot-1.5</artifactId>
+    <version>3.0.0-M1</version>
+    <artifactId>spring-boot-3.0</artifactId>
     <parent>
         <groupId>de.codecentric.spring.boot</groupId>
         <artifactId>spring-boot-actuator-examples</artifactId>
         <version>${revision}</version>
         <relativePath>../pom.xml</relativePath>
     </parent>
+    <properties>
+        <java.version>17</java.version>
+        <maven.compiler.source>17</maven.compiler.source>
+        <maven.compiler.target>17</maven.compiler.target>
+    </properties>
     <dependencyManagement>
         <dependencies>
             <dependency>
