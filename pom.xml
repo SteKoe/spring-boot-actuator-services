@@ -78,9 +78,7 @@
                                     <ports>
                                         <port>8080</port>
                                     </ports>
-                                    <entryPoint>java -Djava.security.egd=file:/dev/./urandom -Dlogging.level.root=debug
-                                        -jar maven/${project.name}-${project.version}.jar
-                                    </entryPoint>
+                                    <entryPoint>["java","-Djava.security.egd=file:/dev/./urandom","-jar","/maven/${project.name}-${project.version}.jar"]</entryPoint>
                                 </build>
                             </image>
                         </images>
