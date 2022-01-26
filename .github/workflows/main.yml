@@ -24,5 +24,11 @@ jobs:
           distribution: zulu
           cache: 'maven'
 
-      - name: Build
+      - name: Build Spring Boot Apps
         run: mvn -B clean package
+
+      - name: Build Landing Page App
+        run: |
+          cd landing-page
+          docker build -t stekoe/spring-boot-app:landing .
+          docker push stekoe/spring-boot-app:landing

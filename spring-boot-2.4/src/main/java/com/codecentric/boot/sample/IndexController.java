@@ -11,7 +11,7 @@ public class IndexController {
     @RequestMapping("/")
     public String index() {
         ClassLoader loader = Thread.currentThread().getContextClassLoader();
-        try (InputStream resourceStream = loader.getResourceAsStream("application.properties")) {
+        try (InputStream resourceStream = loader.getResourceAsStream("application.yml")) {
             StringBuilder sb = new StringBuilder();
             for (int ch; (ch = resourceStream.read()) != -1; ) {
                 sb.append((char) ch);

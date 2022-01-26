@@ -1,0 +1,19 @@
+:root {
+    --supported: #82C91E;
+    --not-supported: #de2323;
+}
+.fa-check-circle {
+    fill: var(--supported);
+    color: var(--supported);
+}
+.fa-times-circle {
+    fill: var(--not-supported);
+    color: var(--not-supported);
+}
+.has-no-borders {
+    border: none !important;;
+}
+.is-vertical-bottom {
+    vertical-align: bottom;;
+
+}
