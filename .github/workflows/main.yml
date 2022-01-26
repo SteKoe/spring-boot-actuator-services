@@ -6,7 +6,7 @@ on:
       - 'master'
 
 jobs:
-  build:
+  build-apps:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v2
@@ -26,6 +26,18 @@ jobs:
 
       - name: Build Spring Boot Apps
         run: mvn -B clean package
+
+
+  build-landing-page:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v2
+
+      - name: Login to DockerHub
+        uses: docker/login-action@v1
+        with:
+          username: ${{ secrets.DOCKERHUB_USERNAME }}
+          password: ${{ secrets.DOCKERHUB_TOKEN }}
 
       - name: Build Landing Page App
         run: |
