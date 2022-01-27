@@ -27,7 +27,6 @@
         <relativePath>../pom.xml</relativePath>
     </parent>
     <properties>
-        <java.version>17</java.version>
         <maven.compiler.source>17</maven.compiler.source>
         <maven.compiler.target>17</maven.compiler.target>
     </properties>
@@ -61,6 +60,27 @@
             <plugin>
                 <groupId>io.fabric8</groupId>
                 <artifactId>docker-maven-plugin</artifactId>
+                <configuration>
+                    <images>
+                        <image>
+                            <name>stekoe/spring-boot-app:${project.version}</name>
+                            <build>
+                                <from>openjdk:17-slim</from>
+                                <assembly>
+                                    <descriptorRef>artifact</descriptorRef>
+                                </assembly>
+                                <volumes>
+                                    <volume>/tmp</volume>
+                                </volumes>
+                                <ports>
+                                    <port>8080</port>
+                                </ports>
+                                <entryPoint>["java","-Djava.security.egd=file:/dev/./urandom","-jar","/maven/${project.name}-${project.version}.jar"]</entryPoint>
+                            </build>
+                        </image>
+                    </images>
+                </configuration>
+
             </plugin>
         </plugins>
     </build>
