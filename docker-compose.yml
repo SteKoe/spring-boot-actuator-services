@@ -24,7 +24,6 @@ services:
       - "traefik.enable=true"
       - "traefik.http.routers.landing-page.rule=PathPrefix(`/app`)"
       - "traefik.http.routers.landing-page.entrypoints=web"
-      - "traefik.docker.network=traefik"
 
   spring-boot-1.4:
     image: "stekoe/spring-boot-app:1.4.7.RELEASE"
@@ -33,7 +32,6 @@ services:
       - "traefik.enable=true"
       - "traefik.http.routers.spring-1-4.rule=PathPrefix(`/app/1.4`)"
       - "traefik.http.routers.spring-1-5.entrypoints=web"
-      - "traefik.docker.network=traefik"
     environment:
       - server.servlet.context-path=/app/1.4
 
@@ -104,7 +102,6 @@ services:
       - "traefik.enable=true"
       - "traefik.http.routers.spring-2-5.rule=PathPrefix(`/app/2.5`)"
       - "traefik.http.routers.spring-2-5.entrypoints=web"
-      - "traefik.docker.network=traefik"
     environment:
       - server.servlet.context-path=/app/2.5
 
@@ -113,9 +110,8 @@ services:
     restart: "always"
     labels:
       - "traefik.enable=true"
-      - "traefik.http.routers.spring.rule=PathPrefix(`/app/2.6`)"
-      - "traefik.http.routers.spring.entrypoints=web"
-      - "traefik.docker.network=traefik"
+      - "traefik.http.routers.spring-2-6.rule=PathPrefix(`/app/2.6`)"
+      - "traefik.http.routers.spring-2-6.entrypoints=web"
     environment:
       - server.servlet.context-path=/app/2.6
 
@@ -124,8 +120,7 @@ services:
     restart: "always"
     labels:
       - "traefik.enable=true"
-      - "traefik.http.routers.spring.rule=PathPrefix(`/app/3.0`)"
-      - "traefik.http.routers.spring.entrypoints=web"
-      - "traefik.docker.network=traefik"
+      - "traefik.http.routers.spring-3-0.rule=PathPrefix(`/app/3.0`)"
+      - "traefik.http.routers.spring-3-0.entrypoints=web"
     environment:
       - server.servlet.context-path=/app/3.0

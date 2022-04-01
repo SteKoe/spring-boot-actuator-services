@@ -10,13 +10,16 @@
     <packaging>pom</packaging>
 
     <properties>
-        <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
         <revision>1.0.0-SNAPSHOT</revision>
+        <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
         <maven.compiler.source>11</maven.compiler.source>
         <maven.compiler.target>11</maven.compiler.target>
+        <docker.image.name>stekoe/spring-boot-app</docker.image.name>
+        <docker-maven-plugin.version>0.39.1</docker-maven-plugin.version>
     </properties>
 
     <modules>
+        <module>landing-page</module>
         <module>spring-boot-1.4</module>
         <module>spring-boot-1.5</module>
         <module>spring-boot-2.0</module>
@@ -30,12 +33,12 @@
     </modules>
     <organization>
         <name>codecentric AG</name>
-        <url>http://www.codecentric.de</url>
+        <url>https://www.codecentric.de</url>
     </organization>
     <licenses>
         <license>
             <name>Apache License, Version 2.0</name>
-            <url>http://www.apache.org/licenses/LICENSE-2.0</url>
+            <url>https://www.apache.org/licenses/LICENSE-2.0</url>
         </license>
     </licenses>
     <build>
@@ -62,11 +65,11 @@
                 <plugin>
                     <groupId>io.fabric8</groupId>
                     <artifactId>docker-maven-plugin</artifactId>
-                    <version>0.38.1</version>
+                    <version>${docker-maven-plugin.version}</version>
                     <configuration>
                         <images>
                             <image>
-                                <name>stekoe/spring-boot-app:${project.version}</name>
+                                <name>${docker.image.name}:${project.version}</name>
                                 <build>
                                     <from>openjdk:11-jre-slim</from>
                                     <assembly>
