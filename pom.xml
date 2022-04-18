@@ -68,8 +68,12 @@
                     <configuration>
                         <images>
                             <image>
-                                <name>${docker.image.name}:${project.version}</name>
+                                <name>${docker.image.name}</name>
                                 <build>
+                                    <tags>
+                                        <tag>${project.version}</tag>
+                                        <tag>${project.artifact.selectedVersion.majorVersion}.${project.artifact.selectedVersion.minorVersion}</tag>
+                                    </tags>
                                     <from>openjdk:11-jre-slim</from>
                                     <assembly>
                                         <descriptorRef>artifact</descriptorRef>
