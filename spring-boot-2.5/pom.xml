@@ -19,6 +19,9 @@
          xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
     <modelVersion>4.0.0</modelVersion>
     <version>2.5.12</version>
+    <properties>
+        <spring-cloud.version>3.0.5</spring-cloud.version>
+    </properties>
     <artifactId>spring-boot-2.5</artifactId>
     <parent>
         <groupId>de.codecentric.spring.boot</groupId>
@@ -49,7 +52,12 @@
         <dependency>
             <groupId>org.springframework.cloud</groupId>
             <artifactId>spring-cloud-starter</artifactId>
-            <version>3.1.1</version>
+            <version>${spring-cloud.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>org.springframework.cloud</groupId>
+            <artifactId>spring-cloud-context</artifactId>
+            <version>${spring-cloud.version}</version>
         </dependency>
     </dependencies>
     <build>
