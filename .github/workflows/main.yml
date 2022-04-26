@@ -25,4 +25,4 @@ jobs:
           cache: 'maven'
 
       - name: Build Spring Boot Apps
-        run: mvn -B clean install
+        run: mvn -T4 -B clean install
