@@ -106,7 +106,7 @@ services:
       - server.servlet.context-path=/app/2.5
 
   spring-boot-2.6:
-    image: "stekoe/spring-boot-app:2.6.3"
+    image: "stekoe/spring-boot-app:2.6.8"
     restart: "always"
     labels:
       - "traefik.enable=true"
@@ -114,6 +114,16 @@ services:
       - "traefik.http.routers.spring-2-6.entrypoints=web"
     environment:
       - server.servlet.context-path=/app/2.6
+
+  spring-boot-2.7:
+    image: "stekoe/spring-boot-app:2.7.0"
+    restart: "always"
+    labels:
+      - "traefik.enable=true"
+      - "traefik.http.routers.spring-2-7.rule=PathPrefix(`/app/2.7`)"
+      - "traefik.http.routers.spring-2-7.entrypoints=web"
+    environment:
+      - server.servlet.context-path=/app/2.7
 
   spring-boot-3.0:
     image: "stekoe/spring-boot-app:3.0.0-M1"

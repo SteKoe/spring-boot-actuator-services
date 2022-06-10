@@ -1,0 +1,39 @@
+management:
+  endpoints:
+    web:
+      exposure:
+        include: "*"
+  endpoint:
+    info:
+      os: true
+    flyway:
+      enabled: true
+    liquibase:
+      enabled: true
+    env:
+      post:
+        enabled: true
+    health:
+      show-details: ALWAYS
+
+logging:
+  file:
+    name: "logs.txt"
+
+app:
+  spring:
+    boot:
+      version: "@project.version@"
+
+spring:
+  flyway:
+    schemas: flyway
+  liquibase:
+    change-log: classpath:db/changelog/changelog.sql
+  datasource:
+    url: jdbc:h2:mem:mydb
+    username: sa
+    password: password
+    driverClassName: org.h2.Driver
+  jpa:
+    spring.jpa.database-platform: org.hibernate.dialect.H2Dialect

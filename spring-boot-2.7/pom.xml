@@ -18,8 +18,8 @@
 <project xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns="http://maven.apache.org/POM/4.0.0"
          xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
     <modelVersion>4.0.0</modelVersion>
-    <version>2.6.8</version>
-    <artifactId>spring-boot-2.6</artifactId>
+    <version>2.7.0</version>
+    <artifactId>spring-boot-2.7</artifactId>
     <parent>
         <groupId>de.codecentric.spring.boot</groupId>
         <artifactId>spring-boot-actuator-examples</artifactId>
