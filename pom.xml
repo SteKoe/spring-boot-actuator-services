@@ -70,7 +70,7 @@
                     <configuration>
                         <images>
                             <image>
-                                <name>${docker.image.name}</name>
+                                <name>${docker.image.name}:${project.version}</name>
                                 <build>
                                     <tags>
                                         <tag>${project.version}</tag>
