@@ -15,7 +15,7 @@
         <maven.compiler.source>11</maven.compiler.source>
         <maven.compiler.target>11</maven.compiler.target>
         <docker.image.name>stekoe/spring-boot-app</docker.image.name>
-        <docker-maven-plugin.version>0.39.1</docker-maven-plugin.version>
+        <docker-maven-plugin.version>0.40.2</docker-maven-plugin.version>
     </properties>
 
     <modules>
@@ -87,6 +87,12 @@
                                         <port>8080</port>
                                     </ports>
                                     <entryPoint>["java","-Djava.security.egd=file:/dev/./urandom","-jar","/maven/${project.name}-${project.version}.jar"]</entryPoint>
+                                    <buildx>
+                                        <platforms>
+                                            <platform>linux/amd64</platform>
+                                            <platform>linux/arm64</platform>
+                                        </platforms>
+                                    </buildx>
                                 </build>
                             </image>
                         </images>
@@ -94,17 +100,17 @@
                     <executions>
                         <execution>
                             <id>docker-build</id>
-                            <phase>package</phase>
                             <goals>
                                 <goal>build</goal>
                             </goals>
+                            <phase>package</phase>
                         </execution>
                         <execution>
                             <id>docker-push</id>
-                            <phase>install</phase>
                             <goals>
                                 <goal>push</goal>
                             </goals>
+                            <phase>install</phase>
                         </execution>
                     </executions>
                 </plugin>
